@@ -22,6 +22,8 @@ class Cinemas(Resource):
         cursor = mydb.cursor()
         if (cinema != ''):
             cursor.execute("SELECT * FROM cinema WHERE cinema.name like '%s';" % cinema)
+        elif (movie != ''):
+            cursor.execute("SELECT DISTINCT(c.cinemaId), c.name, c.address, c.phone FROM cinema c, studio s, timeslot t, movie m WHERE c.cinemaId = s.cinema and t.studio = s.studioId and t.movie = m.movieId and m.title like '%s' ORDER BY c.cinemaId ASC;" % movie)
         else:
             cursor.execute("SELECT * from cinema;")
         row_headers=[x[0] for x in cursor.description] #this will extract row headers

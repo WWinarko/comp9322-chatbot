@@ -10,7 +10,8 @@ def ask_wit(expression):
   try:
     intent = resultJson['intents'][0]['name']
     if (intent == 'showCinemas'):
-      return {"type": intent, "message": showCinemas()}
+      movie = resultJson['entities']['movie:movie'][0]['value'] if 'movie:movie' in resultJson['entities'] else ''
+      return {"type": intent, "message": showCinemas(movie)}
     elif (intent == 'showGreetings'):
       return {"type": intent, "message": "Hi there, Welcome to Cinema Booking Chatbot"}
     elif (intent == 'showCinemaDetails'):

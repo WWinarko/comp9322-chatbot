@@ -1,8 +1,9 @@
 import requests
 
-def showCinemas():
-  result = requests.get('http://127.0.0.1:5001/v1/cinemas')
+def showCinemas(movie):
+  result = requests.get(f'http://127.0.0.1:5001/v1/cinemas?movie={movie}')
   resultJson = result.json()
+  print(resultJson)
   return resultJson
 
 def showCinemaDetails(cinema):
