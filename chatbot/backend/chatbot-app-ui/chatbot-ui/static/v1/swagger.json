@@ -1,0 +1,41 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a chatbot to get cinema and movie details and book a ticket.",
+    "version": "1.0.0",
+    "title": "ML-Based Cinema Booking Chatbot"
+  },
+  "basePath": "/v1",
+  "paths": {
+    "/ask": {
+      "get": {
+        "summary": "ask the chatbot anything",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "expression",
+            "description": "user sentence e.g. how is the weather in Sydney",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "chatbot response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "answer": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

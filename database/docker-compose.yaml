@@ -1,0 +1,30 @@
+version: '3.8'
+networks:
+  default:
+    external: true
+    name: chatbot-network
+
+services:
+  db:
+    container_name: 'chatbotdb'
+    image: mysql
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    environment:
+      MYSQL_DATABASE: chatbotdb
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./init/:/docker-entrypoint-initdb.d/
+  cinema:
+    container_name: 'cinema'
+    build: ../cinema/cinema-app
+    environment:
+      PYTHONUNBUFFERED: 1
+    ports:
+      - '5001:5001'
+    volumes:
+      - ../cinema/cinema-app/:/app

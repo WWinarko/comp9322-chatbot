@@ -1,0 +1,330 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This a cinema api for list all cinema and now showing movies",
+    "version": "1.0.0",
+    "title": "Comp9322 Movie Service"
+  },
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "cinemas",
+      "description": "Operation about cinema"
+    },
+    {
+      "name": "movies",
+      "description": "Operation about movie"
+    }
+  ],
+  "paths": {
+    "/cinemas": {
+      "get": {
+        "tags": [
+          "cinemas"
+        ],
+        "summary": "Shows all available cinemas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "movie",
+            "type": "string",
+            "default": "",
+            "description": "Movie name"
+          },
+          {
+            "in": "query",
+            "name": "cinema",
+            "type": "string",
+            "default": "",
+            "description": "cinema name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Cinema",
+            "schema": {
+              "$ref": "#/definitions/Cinema"
+            }
+          }
+        }
+      }
+    },
+    "/cinemas/{cinema_id}": {
+      "get": {
+        "tags": [
+          "cinemas"
+        ],
+        "summary": "Show cinema detail by given id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cinema_id",
+            "description": "cinema id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieve cinema details success",
+            "schema": {
+              "$ref": "#/definitions/Cinema"
+            }
+          }
+        }
+      }
+    },
+    "/cinemas/{cinema_id}/snacks": {
+      "get": {
+        "tags": [
+          "cinemas"
+        ],
+        "summary": "Show cinema's snacks by given id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cinema_id",
+            "description": "cinema id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieve cinema's snacks success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Snack"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cinemas/{cinema_id}/movies": {
+      "get": {
+        "tags": [
+          "movies"
+        ],
+        "summary": "Show Now Showing Movies by given cinema id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cinema_id",
+            "description": "cinema id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieve cinema's snacks success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Movie"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cinemas/{cinema_id}/movies/{movie_id}": {
+      "get": {
+        "tags": [
+          "movies"
+        ],
+        "summary": "Show movie details by given movie id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cinema_id",
+            "description": "cinema id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "movie_id",
+            "description": "movie id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieve movie detail success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Movie"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cinemas/{cinema_id}/movies/{movie_id}/timeslots": {
+      "get": {
+        "tags": [
+          "movies"
+        ],
+        "summary": "Show movie's timeslots",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "day",
+            "type": "string",
+            "default": "",
+            "description": "Day"
+          },
+          {
+            "in": "path",
+            "name": "cinema_id",
+            "description": "cinema id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "movie_id",
+            "description": "movie id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieve cinema's snacks success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Movie"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cinemas/{cinema_id}/movies/{movie_id}/timeslots/{timeslot_id}": {
+      "get": {
+        "tags": [
+          "movies"
+        ],
+        "summary": "Show timeslot details",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "day",
+            "type": "string",
+            "default": "",
+            "description": "Day"
+          },
+          {
+            "in": "path",
+            "name": "cinema_id",
+            "description": "cinema id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "movie_id",
+            "description": "movie id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "timeslot_id",
+            "description": "timeslot id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieve cinema's snacks success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Movie"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Cinema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Event Cinemas George Street"
+        },
+        "address": {
+          "type": "string",
+          "example": "505/525 George St, Sydney NSW 2000"
+        },
+        "phone": {
+          "type": "string",
+          "example": "(02) 9273 7300"
+        },
+        "movies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Movie"
+          }
+        }
+      }
+    },
+    "Movie": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 123
+        },
+        "title": {
+          "type": "string",
+          "example": "Eternals"
+        },
+        "description": {
+          "type": "string",
+          "example": "Marvel Studios\u2019 Eternals welcomes an exciting new team of Super Heroes to the Marvel Cinematic Universe. The epic story, spanning thousands of years, features a group of immortal heroes forced out of the shadows to reunite against mankind\u2019s oldest enemy, The Deviants."
+        },
+        "cast": {
+          "type": "string",
+          "example": "Gemma Chan"
+        },
+        "timeslots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "13:00 - 15:00"
+          }
+        }
+      }
+    },
+    "Snack": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 222
+        },
+        "name": {
+          "type": "string",
+          "example": "Salt Popcorn"
+        },
+        "price": {
+          "type": "integer",
+          "example": "3.3"
+        }
+      }
+    }
+  }
+}

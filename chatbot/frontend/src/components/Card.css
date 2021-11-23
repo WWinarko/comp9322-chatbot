@@ -1,0 +1,40 @@
+.card-root {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  text-align: left;
+  color: #1d1d1d;
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 10px;
+}
+
+.card-name {
+  font-weight: 600;
+}
+
+.card-detail {
+  margin: 4px;
+}
+
+.card-button {
+  margin: 4px;
+}
+
+.movie-title {
+  color:#1d1d1d
+}
+.movie-description{
+  font-weight: 400;
+  font-size: small;
+}
+
+.movie-original{
+  color: #D61023;
+  font-weight: 600;
+}
+
+.movie-vmax{
+  color: #CDA349;
+  font-weight: 600;
+}
