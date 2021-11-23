@@ -54,10 +54,10 @@ root
 
 3. docker-compose build and up cinema service and database(database on port 5432 and cinema on port 5001)
 
-​		`$ docker compose up --build`
+​		`$ docker-compose up --build`
 
  	4. Open new terminal
- 	5. Cd to `../chatbot`
+ 	5. Cd to `./chatbot`
  	6. Set up the backend
  	7. Cd to ./backend/chatbot-app-ui
  	8. `$ pip3 install -r requirement.txt`
@@ -67,9 +67,9 @@ root
 ​	`$ python3 __init__.py`
 
 11. Open another terminal
-12. Cd to frontend directory
+12. Cd to `./chatbot/frontend`
 13. Run `npm install` to install all required packages
-14. Run `npm start` and enjoy the chatbot
+14. Run `npm start` and enjoy the chatbot (frontend on port 3000)
 
 ## Credential
 
